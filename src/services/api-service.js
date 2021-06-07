@@ -8,7 +8,9 @@ function fetchPopularMovies() {
 }
 
 function fetchMovieById(id) {
-  return axios.get(`/movie/${id}?api_key=${API_KEY}`);
+  return axios.get(
+    `/movie/${id}?api_key=${API_KEY}&append_to_response=reviews,credits`,
+  );
 }
 
 export { fetchPopularMovies, fetchMovieById };
