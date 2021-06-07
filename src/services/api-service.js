@@ -7,4 +7,8 @@ function fetchPopularMovies() {
   return axios.get(`/trending/movie/day?api_key=${API_KEY}`);
 }
 
-export { fetchPopularMovies };
+function fetchMovieById(id) {
+  return axios.get(`/movie/${id}?api_key=${API_KEY}`);
+}
+
+export { fetchPopularMovies, fetchMovieById };
