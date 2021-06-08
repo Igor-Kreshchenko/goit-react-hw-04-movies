@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from '../components/Searchbar';
 import { fetchMovieByName } from '../services/api-service';
+import MovieList from '../components/MovieList';
 
 class MoviesPage extends Component {
   state = {
@@ -16,11 +17,13 @@ class MoviesPage extends Component {
   };
 
   render() {
+    const { movies } = this.state;
     const { onChangeQuery } = this;
 
     return (
       <div>
         <SearchBar onSubmit={onChangeQuery} />
+        <MovieList movies={movies} />
       </div>
     );
   }
