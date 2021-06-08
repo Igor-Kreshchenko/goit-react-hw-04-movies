@@ -33,7 +33,7 @@ class MovieDetailsPage extends Component {
   }
 
   render() {
-    const { overview, poster_path, title } = this.state;
+    const { overview, poster_path, title, reviews, cast } = this.state;
     const { match } = this.props;
 
     return (
@@ -51,8 +51,16 @@ class MovieDetailsPage extends Component {
           </NavLink>
         </div>
 
-        <Route path={`${match.path}/cast`} component={Cast} />
-        <Route path={`${match.path}/reviews`} component={Reviews} />
+        <Route
+          path={`${match.path}/cast`}
+          render={props => {
+            return <Cast {...props} cast={cast} />;
+          }}
+        />
+        <Route
+          path={`${match.path}/reviews`}
+          render={props => <Reviews {...props} reviews={reviews} />}
+        />
       </>
     );
   }

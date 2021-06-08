@@ -4,7 +4,7 @@ const API_KEY = '4ee9f3c9031692c2042b06be7b52de80';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 function fetchPopularMovies() {
-  return axios.get(`/trending/movie/day?api_key=${API_KEY}`);
+  return axios.get(`/trending/movie/week?api_key=${API_KEY}`);
 }
 
 function fetchMovieById(id) {
@@ -13,4 +13,8 @@ function fetchMovieById(id) {
   );
 }
 
-export { fetchPopularMovies, fetchMovieById };
+function fetchMovieByName(value) {
+  return axios.get(`search/movie?api_key=${API_KEY}&query=${value}`);
+}
+
+export { fetchPopularMovies, fetchMovieById, fetchMovieByName };
