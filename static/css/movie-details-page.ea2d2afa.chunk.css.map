@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/components/Cast/Cast.module.css"],"names":[],"mappings":"AAAA,mBACE,WAAY,CACZ,WACF","file":"movie-details-page.ea2d2afa.chunk.css","sourcesContent":[".image {\r\n  width: 200px;\r\n  height: auto;\r\n}\r\n"]}
