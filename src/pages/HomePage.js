@@ -7,9 +7,10 @@ class HomePage extends Component {
     movies: [],
   };
 
-  async componentDidMount() {
-    const response = await fetchPopularMovies();
-    this.setState({ movies: response.data.results });
+  componentDidMount() {
+    fetchPopularMovies()
+      .then(({ data }) => this.setState({ movies: data.results }))
+      .catch(console.log);
   }
 
   render() {
