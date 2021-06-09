@@ -9,6 +9,7 @@ const MovieList = ({ movies, location }) => {
       {movies.map(({ id, poster_path, title, vote_average }) => (
         <li className={styles.ListItem} key={id}>
           <Link
+            className={styles.Link}
             to={{
               pathname: `/movies/${id}`,
               state: {

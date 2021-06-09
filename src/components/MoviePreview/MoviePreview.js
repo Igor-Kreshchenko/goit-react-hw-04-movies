@@ -6,18 +6,18 @@ const MoviePreview = ({ posterUrl, title, vote }) => {
   return (
     <div>
       <img
-        className={styles.image}
+        className={styles.Image}
         src={
           posterUrl
-            ? `https://image.tmdb.org/t/p/w300${posterUrl}`
+            ? `https://image.tmdb.org/t/p/w500${posterUrl}`
             : defaultImage
         }
         alt={`${title} poster`}
       />
-      <p>
-        {title}
-        <span>{vote}</span>
-      </p>
+      <div className={styles.MovieContent}>
+        <p className={styles.Title}>{title}</p>
+        <p className={styles.Vote}>{vote}</p>
+      </div>
     </div>
   );
 };

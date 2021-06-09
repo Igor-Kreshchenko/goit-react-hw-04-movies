@@ -1,9 +1,9 @@
 import React from 'react';
-// import styles from './GoBackButton.module.css';
+import styles from './GoBackButton.module.css';
 
 const GoBackButton = ({ onClick }) => {
   return (
-    <button type="button" onClick={onClick}>
+    <button className={styles.Button} type="button" onClick={onClick}>
       Back
     </button>
   );
