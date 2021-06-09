@@ -4,6 +4,7 @@ import { fetchMovieById } from '../services/api-service';
 import Movie from '../components/Movie';
 import Cast from '../components/Cast';
 import Reviews from '../components/Reviews';
+import GoBackButton from '../components/GoBackButton';
 import routes from '../routes';
 
 class MovieDetailsPage extends Component {
@@ -14,9 +15,11 @@ class MovieDetailsPage extends Component {
   componentDidMount() {
     const { movieId } = this.props.match.params;
 
-    fetchMovieById(movieId).then(({ data }) => {
-      this.setState({ movieDetails: data });
-    });
+    fetchMovieById(movieId)
+      .then(({ data }) => {
+        this.setState({ movieDetails: data });
+      })
+      .catch(console.log);
   }
 
   handleGoBack = () => {
@@ -31,9 +34,7 @@ class MovieDetailsPage extends Component {
 
     return (
       <>
-        <button type="button" onClick={handleGoBack}>
-          Back
-        </button>
+        <GoBackButton onClick={handleGoBack} />
         <Movie movieDetails={movieDetails} />
         <div>
           <NavLink to={`${match.url}/cast`}>
@@ -47,13 +48,13 @@ class MovieDetailsPage extends Component {
         <Route
           path={`${match.path}/cast`}
           render={props => {
-            return <Cast {...props} cast={movieDetails.cast} />;
+            return <Cast {...props} cast={movieDetails?.credits?.cast} />;
           }}
         />
         <Route
           path={`${match.path}/reviews`}
           render={props => (
-            <Reviews {...props} reviews={movieDetails.reviews} />
+            <Reviews {...props} reviews={movieDetails?.reviews?.results} />
           )}
         />
       </>

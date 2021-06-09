@@ -13,8 +13,8 @@ function fetchMovieById(id) {
   );
 }
 
-function fetchMovieByName(value) {
-  return axios.get(`search/movie?api_key=${API_KEY}&query=${value}`);
+function fetchMovieByName(movieName) {
+  return axios.get(`search/movie?api_key=${API_KEY}&query=${movieName}`);
 }
 
 export { fetchPopularMovies, fetchMovieById, fetchMovieByName };

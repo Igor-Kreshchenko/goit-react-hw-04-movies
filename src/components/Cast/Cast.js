@@ -1,22 +1,24 @@
 import React from 'react';
+import defaultAvatar from '../../images/defaultAvatar.png';
+import styles from './Cast.module.css';
 
-const Cast = ({ cast }) => {
+const Cast = ({ cast = [] }) => {
   return (
     <>
-      <h1>Actors</h1>
       <ul>
-        {cast.map(item => (
-          <li key={item.cast_id}>
+        {cast.map(({ cast_id, profile_path, name, character }) => (
+          <li key={cast_id}>
             <img
+              className={styles.image}
               src={
-                item.profile_path &&
-                `https://image.tmdb.org/t/p/w500${item.profile_path}`
+                profile_path
+                  ? `https://image.tmdb.org/t/p/w200${profile_path}`
+                  : defaultAvatar
               }
-              alt={item.name}
-              width="200"
+              alt={name}
             />
-            <h3>{item.name}</h3>
-            <p>{item.character}</p>
+            <h3>{name}</h3>
+            <p>{character}</p>
           </li>
         ))}
       </ul>
