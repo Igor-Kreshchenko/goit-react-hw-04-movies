@@ -5,11 +5,11 @@ import styles from './Cast.module.css';
 const Cast = ({ cast = [] }) => {
   return (
     <>
-      <ul>
+      <ul className={styles.CastList}>
         {cast.map(({ cast_id, profile_path, name, character }) => (
-          <li key={cast_id}>
+          <li className={styles.CastListItem} key={cast_id}>
             <img
-              className={styles.image}
+              className={styles.Image}
               src={
                 profile_path
                   ? `https://image.tmdb.org/t/p/w200${profile_path}`
@@ -17,8 +17,10 @@ const Cast = ({ cast = [] }) => {
               }
               alt={name}
             />
-            <h3>{name}</h3>
-            <p>{character}</p>
+            <div className={styles.CastItemContent}>
+              <h3>{name}</h3>
+              <p>{character}</p>
+            </div>
           </li>
         ))}
       </ul>

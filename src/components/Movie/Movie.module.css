@@ -1,3 +1,17 @@
 .MovieBox {
-  width: 500px;
+  display: flex;
+  flex-direction: row;
+  width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.Image {
+  margin-right: 50px;
+}
+
+.MovieOverview {
+  font-size: 20px;
 }
