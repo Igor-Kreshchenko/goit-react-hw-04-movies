@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import MoviePreview from '../MoviePreview';
 import styles from './MovieList.module.css';
@@ -30,3 +31,15 @@ const MovieList = ({ movies, location }) => {
 };
 
 export default withRouter(MovieList);
+
+MovieList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      poster_path: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      vote_average: PropTypes.number.isRequired,
+    }).isRequired,
+  ).isRequired,
+  location: PropTypes.object.isRequired,
+};

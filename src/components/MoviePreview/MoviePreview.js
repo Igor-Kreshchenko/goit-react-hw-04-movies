@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import defaultImage from '../../images/noPosterImg.png';
 import styles from './MoviePreview.module.css';
 
@@ -23,3 +24,13 @@ const MoviePreview = ({ posterUrl, title, vote }) => {
 };
 
 export default MoviePreview;
+
+MoviePreview.defaultProps = {
+  posterUrl: '',
+};
+
+MoviePreview.propTypes = {
+  posterUrl: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  vote: PropTypes.number.isRequired,
+};

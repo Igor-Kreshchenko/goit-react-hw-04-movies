@@ -13,7 +13,7 @@ const MoviesPage = lazy(() =>
 );
 const MovieDetailsPage = lazy(() =>
   import(
-    './pages/MovieDetailsPage' /* webpackChunkName: "movie-details-page" */
+    './pages/MovieDetailsPage/MovieDetailsPage' /* webpackChunkName: "movie-details-page" */
   ),
 );
 

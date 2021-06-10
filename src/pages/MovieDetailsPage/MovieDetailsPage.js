@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
-import { fetchMovieById } from '../services/api-service';
-import Movie from '../components/Movie';
-import Cast from '../components/Cast';
-import Reviews from '../components/Reviews';
-import GoBackButton from '../components/GoBackButton';
-import routes from '../routes';
+import { fetchMovieById } from '../../services/api-service';
+import Movie from '../../components/Movie';
+import Cast from '../../components/Cast';
+import Reviews from '../../components/Reviews';
+import GoBackButton from '../../components/GoBackButton';
+import routes from '../../routes';
+import styles from './MovieDetailsPage.module.css';
 
 class MovieDetailsPage extends Component {
   state = {
@@ -36,11 +37,14 @@ class MovieDetailsPage extends Component {
       <>
         <GoBackButton onClick={handleGoBack} />
         <Movie movieDetails={movieDetails} />
-        <div>
-          <NavLink to={`${match.url}/cast`}>
+        <div className={styles.NavDetails}>
+          <NavLink className={styles.NavLinkDetails} to={`${match.url}/cast`}>
             <span>Cast</span>
           </NavLink>
-          <NavLink to={`${match.url}/reviews`}>
+          <NavLink
+            className={styles.NavLinkDetails}
+            to={`${match.url}/reviews`}
+          >
             <span>Reviews</span>
           </NavLink>
         </div>

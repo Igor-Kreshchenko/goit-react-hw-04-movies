@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import defaultImage from '../../images/noPosterImg.png';
 import styles from './Movie.module.css';
 
@@ -15,7 +16,7 @@ const Movie = ({ movieDetails }) => {
         alt={`${title} poster`}
       />
       <div>
-        <h2>{title}</h2>
+        <h2 className={styles.MovieTitle}>{title}</h2>
         <p className={styles.MovieOverview}>{overview}</p>
       </div>
     </div>
@@ -23,3 +24,17 @@ const Movie = ({ movieDetails }) => {
 };
 
 export default Movie;
+
+Movie.defaultProps = {
+  poster_path: '',
+  overview: 'No overview',
+  title: 'No title',
+};
+
+Movie.propTypes = {
+  movieDetails: PropTypes.shape({
+    overview: PropTypes.string,
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
+};
