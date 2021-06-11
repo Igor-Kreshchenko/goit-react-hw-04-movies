@@ -38,11 +38,16 @@ class MovieDetailsPage extends Component {
         <GoBackButton onClick={handleGoBack} />
         <Movie movieDetails={movieDetails} />
         <div className={styles.NavDetails}>
-          <NavLink className={styles.NavLinkDetails} to={`${match.url}/cast`}>
+          <NavLink
+            className={styles.NavLinkDetails}
+            activeClassName={styles.NavLinkDetailsActive}
+            to={`${match.url}/cast`}
+          >
             <span>Cast</span>
           </NavLink>
           <NavLink
             className={styles.NavLinkDetails}
+            activeClassName={styles.NavLinkDetailsActive}
             to={`${match.url}/reviews`}
           >
             <span>Reviews</span>
@@ -51,9 +56,9 @@ class MovieDetailsPage extends Component {
 
         <Route
           path={`${match.path}/cast`}
-          render={props => {
-            return <Cast {...props} cast={movieDetails?.credits?.cast} />;
-          }}
+          render={props => (
+            <Cast {...props} cast={movieDetails?.credits?.cast} />
+          )}
         />
         <Route
           path={`${match.path}/reviews`}

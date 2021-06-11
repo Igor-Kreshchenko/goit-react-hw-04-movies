@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import defaultAvatar from '../../images/defaultAvatar.png';
 import styles from './Cast.module.css';
 
+const CAST_IMG_URL = 'https://image.tmdb.org/t/p/w200';
+
 const Cast = ({ cast }) => {
   return (
     <>
@@ -14,7 +16,7 @@ const Cast = ({ cast }) => {
                 className={styles.Image}
                 src={
                   profile_path
-                    ? `https://image.tmdb.org/t/p/w200${profile_path}`
+                    ? `${CAST_IMG_URL}${profile_path}`
                     : defaultAvatar
                 }
                 alt={name}

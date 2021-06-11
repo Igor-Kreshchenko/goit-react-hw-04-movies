@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SearchBar from '../components/Searchbar';
 import MovieList from '../components/MovieList';
 import { fetchMovieByName } from '../services/api-service';
+const queryString = require('query-string');
 
 class MoviesPage extends Component {
   state = {
@@ -9,19 +10,10 @@ class MoviesPage extends Component {
   };
 
   componentDidMount() {
-    const movies = localStorage.getItem('movies');
-    const parsedMovies = JSON.parse(movies);
+    const query = this.getQueryFromProps(this.props);
 
-    if (parsedMovies) {
-      this.setState({ movies: parsedMovies });
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { movies } = this.state;
-
-    if (movies !== prevState.movies) {
-      localStorage.setItem('movies', JSON.stringify(movies));
+    if (query) {
+      this.onChangeQuery(query);
     }
   }
 
@@ -29,11 +21,22 @@ class MoviesPage extends Component {
     fetchMovieByName(query)
       .then(({ data }) => {
         this.setState({
+          searchQuery: query,
           movies: data.results,
+        });
+      })
+      .then(() => {
+        const { history, location } = this.props;
+
+        history.push({
+          pathname: location.pathname,
+          search: `?query=${query}`,
         });
       })
       .catch(console.log);
   };
+
+  getQueryFromProps = props => queryString.parse(props.location.search).query;
 
   render() {
     const { movies } = this.state;

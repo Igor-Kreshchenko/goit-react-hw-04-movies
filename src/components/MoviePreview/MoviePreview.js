@@ -3,16 +3,14 @@ import PropTypes from 'prop-types';
 import defaultImage from '../../images/noPosterImg.png';
 import styles from './MoviePreview.module.css';
 
+const MOVIE_PREVIEW_URL = 'https://image.tmdb.org/t/p/w500';
+
 const MoviePreview = ({ posterUrl, title, vote }) => {
   return (
     <div>
       <img
         className={styles.Image}
-        src={
-          posterUrl
-            ? `https://image.tmdb.org/t/p/w500${posterUrl}`
-            : defaultImage
-        }
+        src={posterUrl ? `${MOVIE_PREVIEW_URL}${posterUrl}` : defaultImage}
         alt={`${title} poster`}
       />
       <div className={styles.MovieContent}>
