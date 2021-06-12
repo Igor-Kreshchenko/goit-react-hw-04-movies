@@ -25,10 +25,6 @@ const Reviews = ({ reviews }) => {
 
 export default Reviews;
 
-Reviews.defaultProps = {
-  reviews: [],
-};
-
 Reviews.propTypes = {
   reviews: PropTypes.arrayOf(
     PropTypes.shape({
@@ -36,5 +32,5 @@ Reviews.propTypes = {
       author: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
     }).isRequired,
-  ),
+  ).isRequired,
 };

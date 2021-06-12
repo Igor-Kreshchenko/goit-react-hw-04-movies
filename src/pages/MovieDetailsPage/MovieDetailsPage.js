@@ -10,15 +10,25 @@ import styles from './MovieDetailsPage.module.css';
 
 class MovieDetailsPage extends Component {
   state = {
-    movieDetails: {},
+    poster_path: '',
+    title: '',
+    overview: '',
+    cast: [],
+    reviews: [],
   };
 
   componentDidMount() {
     const { movieId } = this.props.match.params;
 
     fetchMovieById(movieId)
-      .then(({ data }) => {
-        this.setState({ movieDetails: data });
+      .then(({ data: { poster_path, title, overview, cast, reviews } }) => {
+        this.setState({
+          poster_path,
+          title,
+          overview,
+          cast,
+          reviews: reviews.results,
+        });
       })
       .catch(console.log);
   }
@@ -29,14 +39,14 @@ class MovieDetailsPage extends Component {
   };
 
   render() {
-    const { movieDetails } = this.state;
+    const { poster_path, title, overview, cast, reviews } = this.state;
     const { match } = this.props;
     const { handleGoBack } = this;
 
     return (
       <>
         <GoBackButton onClick={handleGoBack} />
-        <Movie movieDetails={movieDetails} />
+        <Movie poster_path={poster_path} title={title} overview={overview} />
         <div className={styles.NavDetails}>
           <NavLink
             className={styles.NavLinkDetails}
@@ -56,15 +66,11 @@ class MovieDetailsPage extends Component {
 
         <Route
           path={`${match.path}/cast`}
-          render={props => (
-            <Cast {...props} cast={movieDetails?.credits?.cast} />
-          )}
+          render={props => <Cast {...props} cast={cast} />}
         />
         <Route
           path={`${match.path}/reviews`}
-          render={props => (
-            <Reviews {...props} reviews={movieDetails?.reviews?.results} />
-          )}
+          render={props => <Reviews {...props} reviews={reviews} />}
         />
       </>
     );
