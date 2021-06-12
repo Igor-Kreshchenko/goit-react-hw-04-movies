@@ -21,12 +21,12 @@ class MovieDetailsPage extends Component {
     const { movieId } = this.props.match.params;
 
     fetchMovieById(movieId)
-      .then(({ data: { poster_path, title, overview, cast, reviews } }) => {
+      .then(({ data: { poster_path, title, overview, credits, reviews } }) => {
         this.setState({
           poster_path,
           title,
           overview,
-          cast,
+          cast: credits.cast,
           reviews: reviews.results,
         });
       })
