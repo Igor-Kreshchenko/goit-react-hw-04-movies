@@ -40,8 +40,9 @@ class MovieDetailsPage extends Component {
 
   render() {
     const { poster_path, title, overview, cast, reviews } = this.state;
-    const { match } = this.props;
+    const { match, location } = this.props;
     const { handleGoBack } = this;
+    const deepLocation = location.state.from;
 
     return (
       <>
@@ -51,14 +52,20 @@ class MovieDetailsPage extends Component {
           <NavLink
             className={styles.NavLinkDetails}
             activeClassName={styles.NavLinkDetailsActive}
-            to={`${match.url}/cast`}
+            to={{
+              pathname: `${match.url}/cast`,
+              state: { from: deepLocation },
+            }}
           >
             <span>Cast</span>
           </NavLink>
           <NavLink
             className={styles.NavLinkDetails}
             activeClassName={styles.NavLinkDetailsActive}
-            to={`${match.url}/reviews`}
+            to={{
+              pathname: `${match.url}/reviews`,
+              state: { from: deepLocation },
+            }}
           >
             <span>Reviews</span>
           </NavLink>
