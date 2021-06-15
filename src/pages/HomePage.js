@@ -16,11 +16,7 @@ class HomePage extends Component {
   render() {
     const { movies } = this.state;
 
-    return (
-      <>
-        <MovieList movies={movies} />
-      </>
-    );
+    return <MovieList movies={movies} />;
   }
 }
 
